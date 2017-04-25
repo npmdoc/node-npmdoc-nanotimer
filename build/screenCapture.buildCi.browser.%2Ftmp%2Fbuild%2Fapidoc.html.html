@@ -1,0 +1,137 @@
+<html><head></head><body><div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a href="https://github.com/Krb686/nanotimer#readme">nanotimer (v0.3.14)</a>
+</h1>
+<h4>A much higher accuracy timer object that makes use of the node.js hrtime function call.</h4>
+<div class="apidocSectionDiv"><a href="#apidoc.tableOfContents" id="apidoc.tableOfContents"><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.nanotimer">module nanotimer</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.nanotimer.nanotimer">
+            function <span class="apidocSignatureSpan"></span>nanotimer
+            <span class="apidocSignatureSpan">(log)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.nanotimer" id="apidoc.module.nanotimer">module nanotimer</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.nanotimer.nanotimer" id="apidoc.element.nanotimer.nanotimer">
+        function <span class="apidocSignatureSpan"></span>nanotimer
+        <span class="apidocSignatureSpan">(log)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function NanoTimer(log){
+
+	var version = process.version;
+	var major = version.split('.')[0];
+	major = major.split('v')[1];
+	var minor = version.split('.')[1];
+
+	if ((major == 0) &amp;&amp; (minor &lt; 10)){
+		console.log('Error: Please update to the latest version of node! This library requires 0.10.x or later');
+		process.exit(0);
+	}
+
+	//Time reference variables
+	this.intervalT1 = null;
+	this.timeOutT1 = null;
+	this.intervalCount = 1;
+
+	//Deferred reference indicator variables.  Indicate whether the timer used/will use the deferred call. ie - delay/interval &gt; 25ms
+	this.deferredInterval = false;
+	this.deferredTimeout = false;
+
+	//Deferred reference variables.  Used to clear the native js timeOut calls
+	this.deferredTimeoutRef = null;
+	this.deferredIntervalRef = null;
+
+	//Callback reference variables.  Used to be able to still successfully call callbacks when timeouts or intervals are cleared.
+	this.timeoutCallbackRef = null;
+	this.intervalCallbackRef = null;
+
+	//Immediate reference variables. Used to clear functions scheduled with setImmediate from running in the event timeout/interval
+ is cleared.
+	this.timeoutImmediateRef = null;
+	this.intervalImmediateRef = null;
+
+	this.intervalErrorChecked = false;
+
+	this.intervalType = "";
+
+	this.timeoutTriggered = false;
+
+	if(log){
+		this.logging = true;
+	}
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
+</body></html>
